@@ -1,0 +1,25 @@
+{
+  "slug": "oryzo",
+  "title": "Oryzo Motion Study",
+  "original_url": "https://oryzo.ai/",
+  "studied_at": "2026-07-07",
+  "status": "public",
+  "public_safety": {
+    "contains_original_source": false,
+    "contains_original_assets": false,
+    "contains_original_fonts": false,
+    "screenshots_are_cropped_commentary": false,
+    "license_reviewed": true
+  },
+  "topics": [
+    "webgl scrollytelling",
+    "blueprint framing",
+    "deadpan product launch",
+    "technical typography",
+    "3d product choreography"
+  ],
+  "private_source": {
+    "workspace": "motion-director",
+    "path": "experiments/oryzo-mirror"
+  }
+}
