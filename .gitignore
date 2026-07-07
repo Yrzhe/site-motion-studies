@@ -1,0 +1,22 @@
+# Dependencies and build output
+node_modules/
+dist/
+build/
+.next/
+.vite/
+*.tsbuildinfo
+
+# Local env and editor state
+.DS_Store
+*.log
+.env
+.env.*
+
+# Private clone artifacts should never be copied here
+mirror/
+assets/network/
+RECON/
+CLONE_REPORT.md
+original-source/
+original-assets/
+

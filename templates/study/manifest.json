@@ -1,0 +1,19 @@
+{
+  "slug": "site-slug",
+  "title": "Study Title",
+  "original_url": "https://example.com/",
+  "studied_at": "YYYY-MM-DD",
+  "status": "draft",
+  "public_safety": {
+    "contains_original_source": false,
+    "contains_original_assets": false,
+    "contains_original_fonts": false,
+    "screenshots_are_cropped_commentary": false,
+    "license_reviewed": false
+  },
+  "topics": [],
+  "private_source": {
+    "workspace": "motion-director",
+    "path": "experiments/<site>-clone/"
+  }
+}
