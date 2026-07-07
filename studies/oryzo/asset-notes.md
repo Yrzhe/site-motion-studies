@@ -21,8 +21,11 @@ This public study replaces original assets with:
 - Written teardown notes.
 - Color and typography observations.
 - Brand-neutral CSS/JS demo code.
-- CSS shapes and gradients instead of Oryzo product models/textures.
-- No screenshots in the initial public study.
+- CSS shapes, gradients, and DOM geometry instead of Oryzo product
+  models/textures.
+- Low-resolution/compressed original-site reference media used only for
+  commentary.
+- A demo recording generated from this repository's original demo code.
 
 ## Excluded From Public Repo
 
@@ -33,7 +36,9 @@ Excluded:
 - Original fonts.
 - Original 3D model, animation, splat, Rive, and texture files.
 - Full-page screenshot captures.
+- Source-quality original-site recordings.
 - Mirror manifests and raw network captures.
 
-If a later update adds screenshots, they must be small cropped commentary
-images with `screenshots/README.md` explaining why they are included.
+Any additional original-site media must stay small, low-resolution, and
+commentary-oriented. Source-quality captures belong in the private workspace,
+not this public repo.

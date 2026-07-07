@@ -17,6 +17,7 @@ const requiredFiles = [
   "interaction-map.md",
   "asset-notes.md",
   "references.md",
+  "media/README.md",
   "screenshots/README.md",
 ];
 
@@ -27,6 +28,7 @@ const prohibitedPathParts = [
   "mirror/site",
   "original-source",
   "original-assets",
+  "original-long-capture",
   "framerusercontent.com",
   "ctfassets.net",
 ];
@@ -36,15 +38,21 @@ const suspiciousExtensions = new Set([
   ".woff2",
   ".ttf",
   ".otf",
-  ".mp4",
-  ".mov",
-  ".webm",
   ".glb",
   ".gltf",
   ".sog",
   ".buf",
   ".riv",
 ]);
+
+const mediaExtensions = new Set([".mp4", ".mov", ".webm"]);
+
+function isAllowedStudyMedia(normalizedPath) {
+  return (
+    normalizedPath.includes("/media/demo-recordings/") ||
+    normalizedPath.includes("/media/original-reference/")
+  );
+}
 
 let errors = 0;
 let warnings = 0;
@@ -109,6 +117,9 @@ function checkManifest(studyRoot, slug) {
   if (safety.contains_original_fonts) {
     logError(`${slug}: contains_original_fonts must be false for public repo`);
   }
+  if (safety.contains_original_reference_media && !safety.reference_media_is_commentary_only) {
+    logError(`${slug}: original reference media must be marked commentary-only`);
+  }
 }
 
 function checkStudy(studyRoot) {
@@ -132,8 +143,18 @@ function checkStudy(studyRoot) {
       }
     }
 
-    if (suspiciousExtensions.has(path.extname(file).toLowerCase())) {
+    if (
+      suspiciousExtensions.has(path.extname(file).toLowerCase()) &&
+      !isAllowedStudyMedia(normalized)
+    ) {
       logWarning(`${normalized}: binary/media asset needs explicit asset-notes.md permission`);
+    }
+
+    if (
+      mediaExtensions.has(path.extname(file).toLowerCase()) &&
+      !isAllowedStudyMedia(normalized)
+    ) {
+      logWarning(`${normalized}: media files should live under media/original-reference or media/demo-recordings`);
     }
   }
 }
@@ -153,4 +174,3 @@ if (!fs.existsSync(studiesDir)) {
 
 console.log(`check-study: ${errors} error(s), ${warnings} warning(s)`);
 process.exitCode = errors > 0 ? 1 : 0;
-

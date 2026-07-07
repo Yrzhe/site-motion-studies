@@ -1,8 +1,8 @@
 # Screenshots
 
-Only include small cropped screenshots used for commentary. Do not add full
-site screenshot dumps.
+Legacy folder. Prefer `../media/original-reference/` for public reference
+stills and `../media/demo-recordings/` for demo videos.
 
-No screenshots are included in the initial public Oryzo study. The private
-Motion Director archive contains verification screenshots, but they are not
-redistributed here.
+The Oryzo public study includes one low-resolution commentary still in
+`../media/original-reference/`. The private Motion Director archive contains
+source-quality verification screenshots, but they are not redistributed here.

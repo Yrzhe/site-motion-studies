@@ -8,11 +8,15 @@
     "contains_original_source": false,
     "contains_original_assets": false,
     "contains_original_fonts": false,
-    "screenshots_are_cropped_commentary": false,
+    "contains_original_reference_media": true,
+    "screenshots_are_cropped_commentary": true,
+    "reference_media_is_commentary_only": true,
+    "demo_recordings_are_original": true,
     "license_reviewed": true
   },
   "topics": [
     "webgl scrollytelling",
+    "scene choreography",
     "blueprint framing",
     "deadpan product launch",
     "technical typography",

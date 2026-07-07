@@ -8,7 +8,10 @@
     "contains_original_source": false,
     "contains_original_assets": false,
     "contains_original_fonts": false,
+    "contains_original_reference_media": false,
     "screenshots_are_cropped_commentary": false,
+    "reference_media_is_commentary_only": false,
+    "demo_recordings_are_original": false,
     "license_reviewed": false
   },
   "topics": [],

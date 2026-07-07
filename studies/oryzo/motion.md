@@ -2,41 +2,47 @@
 
 ## Inventory
 
-Important motion moments:
+The strongest motion idea is scene ownership. Each scroll span changes the
+meaning of the same object rather than throwing in unrelated transitions.
 
-- Hero product stage: scroll-controlled camera/object relationship, not a
-  simple fade-in.
-- Blueprint frame: stable reference geometry while the object moves.
-- Wearable/HUD beat: telemetry appears as if attached to the product concept.
-- Flip encryption: a physical gesture becomes a security metaphor.
-- Social/durability beats: image/video gallery rhythm supports feature jokes.
-- Legacy beat: historical compatibility appears as a product spec.
-- Contact ending: simpler, calmer, and more editorial.
+| Motion | Trigger | Purpose | Public Demo |
+|---|---|---|---|
+| Stage drift | Global scroll | Makes the environment feel cinematic without losing object focus. | Pegboard/mat translation. |
+| Object lift | Lift beat local progress | Converts a product claim into physical evidence. | Cup/coaster vertical offset and shadow change. |
+| Thermal state | Thermal beat local progress | Turns insulation into a visible technical mode. | Heat wash + HUD value + formula copy. |
+| Flip gesture | Flip beat local progress | Makes the joke feature physically legible. | Coaster rotates while labels stay serious. |
+| Legacy shift | Legacy beat entry | Reframes the product as historical compatibility. | Terracotta background + vessel silhouettes. |
 
 ## Choreography
 
-Oryzo's scroll choreography works because each section owns a clear scene. The
-page does not animate every object independently for decoration. Instead:
+Oryzo's choreography is not "elements fade in as they enter viewport." It is a
+state machine:
 
 1. Scroll enters a section.
 2. Section becomes the current scene.
 3. Product/camera/labels update within that scene.
 4. The visual grammar stays consistent across beats.
 
-This pattern is useful for public demos: separate `section progress` from
-`global scroll`, then map each section to a local 0-1 value.
+In the public demo, this is represented by:
+
+```text
+global scroll progress -> beat index -> local beat progress -> CSS variables
+```
+
+That split matters. The global progress owns page travel, while local progress
+owns the current physical action. Mixing those two is how scrollytelling demos
+usually become mushy.
 
 ## Reproduction Notes
 
-Do not copy the original runtime. Rebuild the grammar:
+To rebuild the motion without copying the original runtime:
 
-- Use CSS dashed frames and mono labels for the technical layer.
-- Use a simple 3D primitive, CSS transform, Canvas, or Three.js object as the
-  product placeholder.
-- Drive transforms from scroll progress.
-- Keep the product object centered and let labels orbit the narrative.
-- Use one accent color for HUD/telemetry only.
+- Define named scene states before writing animation code.
+- Keep one stable product anchor across all states.
+- Give each state one physical action: lift, heat, flip, gallery, legacy.
+- Use CSS variables for motion values that need to stay inspectable.
+- Keep labels mostly stable. If every label moves, nothing feels measured.
+- Let color modes mark semantic changes, not generic decoration.
 
-The included `blueprint-product-frame` demo implements the smallest useful
-version of this: a staged product object, blueprint frame, spec labels, model
-tab, and scroll progress HUD.
+`demos/scene-choreography/` implements this as vanilla CSS/JS so the motion
+mapping is easy to inspect.

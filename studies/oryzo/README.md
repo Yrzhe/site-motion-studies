@@ -8,41 +8,54 @@ original implementations unless explicitly noted otherwise.
 
 ## What Is Interesting
 
-Oryzo turns a humble cork coaster into a cinematic technical product launch.
-The craft is not in a single component. It is the combination of premium
-deadpan copy, engineering-diagram framing, warm editorial typography, long-form
-WebGL scrollytelling, and a sequence of intentionally overqualified product
-features.
+Oryzo turns a cork coaster into a cinematic technical product launch. The page
+works because the visual system treats an ordinary object as industrial
+hardware and never breaks character.
 
-The private study found two useful layers:
+The useful public lesson is not any single asset. It is the scene grammar:
 
-- The original site is a static Astro deployment with a heavy WebGL runtime and
-  many model/texture/video assets. That full mirror is kept private.
-- The reusable public value is the system: blueprint frames, mono specification
-  labels, scroll-addressed product scenes, HUD overlays, and a product narrative
-  that treats every tiny feature as if it were industrial R&D.
+- a fixed product stage
+- an editorial left rail
+- a scroll-owned sequence of scene beats
+- a centered object/camera relationship
+- mono labels that behave like measurement, not decoration
+- deadpan copy that makes absurd claims feel premium
 
 This public folder extracts those ideas without redistributing Oryzo's source,
 fonts, 3D models, videos, images, or bundled runtime.
 
 ## Extracted Techniques
 
-- Full-page pinned scrollytelling with scene ownership per section.
-- Giant product wordmark paired with tiny technical mono labels.
-- Dashed engineering frames that make a small object feel measured and
-  expensive.
-- Warm near-black stage with cream type and restrained cyan HUD accents.
-- Editorial serif asides for human warmth inside a technical presentation.
-- Scroll-controlled product movement rather than generic reveal animations.
-- Deadpan feature escalation: wearable, secure, backwards compatible, social,
-  and contact beats for a simple coaster.
+- Scene-owned scrolling: each section gets a local motion state instead of a
+  generic fade/reveal.
+- Product permanence: the object stays central while labels, formulas, color
+  mode, and stage props change around it.
+- Register contrast: display wordmark, mono spec labels, and serif editorial
+  copy do different jobs.
+- Technical comedy: claims such as lift, thermal handling, encryption, and
+  backwards compatibility are presented with product-launch seriousness.
+- Stage layering: DOM copy remains crisp while WebGL/media surfaces carry the
+  cinematic product world.
 
-## Original Demo
+## Media Preview
 
-`demos/blueprint-product-frame/` is a brand-neutral recreation of the Oryzo
-presentation language: a circular product placeholder, dashed blueprint frame,
-spec labels, side model tab, and a scroll progress HUD. It is original CSS/JS
-and contains no Oryzo assets.
+- `media/original-reference/oryzo-original-scroll-reference.mp4`: compressed
+  original-site scroll reference used to see the page-level choreography.
+- `media/original-reference/oryzo-hero-reference.jpg`: low-resolution reference
+  still for the hero/thermal composition.
+- `media/demo-recordings/scene-choreography.mp4`: recording of the public
+  reconstruction demo.
+
+## Demos
+
+`demos/scene-choreography/` is the primary public reconstruction. It rebuilds
+the page-level grammar with original CSS/JS:
+
+- fixed left copy rail
+- desk/pegboard product stage
+- centered cup/coaster object
+- scroll-owned beats for intro, lift, thermal, flip, and legacy
+- HUD/formula overlays and measurement ticks
 
 ## Contents
 
@@ -52,9 +65,12 @@ and contains no Oryzo assets.
 - `motion.md`: motion inventory and recreation notes.
 - `interaction-map.md`: interaction states and responsive behavior.
 - `asset-notes.md`: redistribution and replacement decisions.
+- `media/`: compressed original reference media and original demo recording.
 - `demos/`: original effect implementations.
 
 ## Public Safety
 
-No original Oryzo bundles, fonts, videos, images, models, splats, Rive files,
-or screenshots are included here. See `asset-notes.md`.
+No original Oryzo bundles, fonts, source videos, images, models, splats, Rive
+files, or raw crawl artifacts are included here. Original-site visuals are
+compressed reference media for commentary, not reusable assets. See
+`asset-notes.md`.

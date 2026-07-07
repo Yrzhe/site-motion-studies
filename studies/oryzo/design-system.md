@@ -30,13 +30,22 @@ Most frames are rectangular/dashed measurement devices, not content cards.
 ## Components
 
 - Fixed nav with a small wordmark and understated section links.
-- Dashed blueprint frame around the product.
+- Fixed editorial/copy rail with a blurred glass/film surface.
+- Desk or lab stage where the product remains central.
+- Dashed blueprint frame around the object.
 - Side model tab with vertical mono label.
-- Frosted credit/spec panels with thin dividers.
+- Formula strip that makes claims feel measured.
 - Cyan HUD overlays for pseudo-scientific product telemetry.
-- Tiny video/play chip as a supporting artifact.
-- Mono labels for scroll prompts, model numbers, section metadata, and
-  captions.
+- Scene-specific props: desk tools, heatmap, gallery/media, legacy vessels.
+- Mono labels for model numbers, formulas, section metadata, and captions.
+
+The important component is not any single dashed box. It is the relationship:
+
+```text
+left claim rail + center product stage + right/bottom measurement labels
+```
+
+That triangle lets the page change claims while still feeling like one system.
 
 ## Visual Texture
 
@@ -51,3 +60,12 @@ Texture comes from contrast between physical material and interface overlay:
 
 Avoid generic glassmorphism. Blur panels should feel like instrument overlays,
 not decorative cards.
+
+## Public Reconstruction Rules
+
+- Use a brand-neutral object unless the asset license is explicit.
+- Keep the original's typography roles, not necessarily its exact font files.
+- Preserve the section grammar: intro, physical feature, technical mode,
+  gesture/joke, historical or social proof.
+- Make the motion inspectable. In the demo, motion values live in CSS variables
+  such as `--progress`, `--local`, `--lift`, and `--tilt`.

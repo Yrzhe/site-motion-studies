@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oryzo Scene Choreography Study</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body data-scene="intro">
+    <main class="study-shell">
+      <nav class="top-nav" aria-label="Scene sections">
+        <strong>OBJECT-01</strong>
+        <span data-beat="intro" class="is-active">INTRO</span>
+        <span data-beat="lift">LIFT</span>
+        <span data-beat="thermal">THERMAL</span>
+        <span data-beat="flip">FLIP</span>
+        <span data-beat="legacy">LEGACY</span>
+      </nav>
+
+      <section class="stage" aria-labelledby="scene-title">
+        <aside class="copy-rail">
+          <div class="rail-icon" aria-hidden="true">
+            <span></span>
+          </div>
+          <p class="mono eyebrow" id="scene-kicker">Made for mugs. Built for tables.</p>
+          <h1 id="scene-title">The smallest product gets the biggest launch.</h1>
+          <p id="scene-copy">
+            Treat a cork coaster like precision hardware: keep the product fixed
+            in the center and let every annotation behave like measurement.
+          </p>
+          <div class="rail-divider"></div>
+          <p class="rail-caption" id="scene-caption">Scroll maps to scene ownership, not generic fade-in timing.</p>
+        </aside>
+
+        <div class="wordmark" aria-hidden="true">COASTER</div>
+
+        <div class="scene-lab" aria-hidden="true">
+          <div class="pegboard"></div>
+          <div class="desk"></div>
+          <div class="mat">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="prop prop-pencil"></div>
+          <div class="prop prop-cutter"></div>
+          <div class="prop prop-keyboard"></div>
+
+          <div class="blueprint">
+            <i class="tick tick-left"></i>
+            <i class="tick tick-right"></i>
+            <i class="tick tick-top"></i>
+            <i class="tick tick-bottom"></i>
+            <i class="ruler ruler-left"></i>
+            <i class="ruler ruler-right"></i>
+          </div>
+
+          <div class="product">
+            <div class="cup">
+              <div class="cup-lid"></div>
+              <div class="cup-body">
+                <span class="cup-band"></span>
+                <span class="cup-mark"></span>
+              </div>
+            </div>
+            <div class="coaster">
+              <span></span>
+            </div>
+            <div class="product-shadow"></div>
+          </div>
+
+          <div class="thermal-wash"></div>
+          <div class="legacy-vessels">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <aside class="hud-stack" aria-label="Technical readout">
+          <div class="hud hud-primary">
+            <span>SCENE</span>
+            <strong id="hud-scene">01</strong>
+          </div>
+          <div class="hud hud-accent">
+            <span id="hud-label">LIFT</span>
+            <strong id="hud-value">0.0mm</strong>
+          </div>
+        </aside>
+
+        <aside class="model-tab">ORYZO-1 MODEL</aside>
+
+        <div class="formula-strip">
+          <span id="formula-left">constant lift via geometry</span>
+          <strong id="formula-right">Δh ≈ t</strong>
+        </div>
+
+        <div class="beat-index" aria-hidden="true">
+          <span id="beat-active">01</span>
+          <i></i>
+          <span>05</span>
+        </div>
+
+        <div class="progress-bar" aria-hidden="true"><span></span></div>
+      </section>
+
+      <section class="scroll-space" aria-label="Scroll space"></section>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

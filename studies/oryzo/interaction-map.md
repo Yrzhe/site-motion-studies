@@ -2,16 +2,18 @@
 
 ## Scroll
 
-Scroll is the main input. It controls section ownership, scene transitions, and
-the product/camera relationship.
+Scroll is the main input. It controls scene ownership, scene-local progress,
+and the product/camera relationship.
 
-Private reconstruction used the concept of registered sections with measured
-show/hide offsets. Public pattern:
+Public pattern:
 
-- Measure each section relative to the viewport.
-- Convert the active section into a local progress value.
-- Update the stage from that local progress.
+- Divide the full scroll range into named beats.
+- Convert global scroll into `beat index + local progress`.
+- Update copy only when the beat changes.
+- Update physical values continuously from local progress.
 - Keep labels readable and avoid moving every text element at once.
+
+The `scene-choreography` demo uses this model directly in `src/main.js`.
 
 ## Hover
 
@@ -41,3 +43,6 @@ Recommendations:
 - Collapse edge labels into bottom or top bands.
 - Reduce side tabs and dense mono annotations.
 - Preserve the section progression even when WebGL detail is simplified.
+
+The public demo collapses the rail into a top band and keeps the product stage
+as the primary screen object.

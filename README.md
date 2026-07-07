@@ -11,8 +11,12 @@ implementations. It is not a mirror of the studied websites.
 - Design and motion teardowns written in our own words.
 - Typography, layout, color, interaction, and choreography notes.
 - Small cropped screenshots used for commentary, when needed.
+- Compressed original-site reference stills or clips used to explain a
+  technique.
 - Original demos that recreate useful effects without copying the original
   site's source.
+- Recordings of those original demos, so a reader can understand the motion
+  without running local code.
 - Brand-neutral reusable patterns promoted from individual studies.
 
 ## What This Repo Does Not Contain
@@ -22,6 +26,8 @@ implementations. It is not a mirror of the studied websites.
 - Original fonts, videos, images, logos, 3D models, or shader files unless
   their license explicitly allows redistribution.
 - Full-page screenshot dumps.
+- Source-quality captures, raw crawl archives, or asset packs from the original
+  website.
 - Any claim of affiliation with the original site owners.
 
 ## Structure
@@ -38,6 +44,10 @@ studies/
     interaction-map.md
     asset-notes.md
     references.md
+    media/
+      README.md
+      original-reference/
+      demo-recordings/
     demos/
     screenshots/
     snippets/
@@ -69,6 +79,22 @@ Before publishing a study, run:
 ```bash
 node tools/check-study.mjs
 ```
+
+## Study Standard
+
+Each study should be useful to someone who opens the folder cold:
+
+- `README.md` gives the thesis, the key techniques, the media preview, and the
+  available demos.
+- `media/README.md` explains what public media exists, what stayed private, and
+  why.
+- `media/original-reference/` may contain low-resolution, commentary-oriented
+  stills or compressed scroll clips from the original site.
+- `media/demo-recordings/` may contain videos generated from our own demo code.
+  These are safe to publish when `asset-notes.md` identifies them as original
+  recordings.
+- `demos/<demo-name>/README.md` must state the effect, the source files, how to
+  run it, and the intended motion beats.
 
 ## License
 
