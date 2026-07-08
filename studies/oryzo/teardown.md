@@ -9,12 +9,19 @@ stage being reinterpreted as the scroll moves.
 | Beat | Product Claim | Visual System |
 |---|---|---|
 | Intro | The coaster is a flagship object. | Giant wordmark, central object, desk/cutting-mat stage, model tab. |
+| AI | The coaster is an "AI model." | Dark product reveal, hand/coaster focus, `Powered by AI*`, Adobe Illustrator disclaimer. |
+| Wearable | The coaster is a lifestyle object. | Main gallery, side thumbnails, warning overlay, magazine-cover joke. |
 | Lift | It raises the mug by exactly one coaster thickness. | Vertical measurement, shadow change, geometry formula. |
 | Thermal | It handles hot/cold extremes. | Heatmap color mode, TDM formula, intensified HUD. |
+| Circularity | It is now more round. | Coaster as precision circle, curve equation, circularity metric. |
 | Flip | Turning it over becomes encryption. | Physical flip gesture, security copy, unchanged premium UI. |
-| Built different | It survives/socializes like a product. | Gallery/media beats, stickers, colorways, floor/damage jokes. |
-| Legacy | It supports ancient vessels. | Museum-like register, vessel silhouettes, compatibility copy. |
-| Contact | The joke resolves calmly. | Reduced motion, simple email, product tagline. |
+| Grip | The material is a lab sample. | Macro cork/desk texture, zoom box, friction coefficient. |
+| Sustainability | The material becomes sourcing narrative. | Giant sustainability typography, bark/cork visuals, harvest facts. |
+| Testimonies | Fake users validate the product. | Review table, absurd author personas, avatar/media cells. |
+| Social content | Product claims become launch cards. | Always-on, RTX 3090, drop-test, legacy support social tiles. |
+| Product | The fake product becomes a SKU. | ORYZO / Pro / Pro Max selector, waitlist CTA, detail panel. |
+| Open weight | The coaster becomes an AI model release. | Paper/model/code buttons, peer review joke. |
+| Footer | The real pitch is Lusion. | Large agency CTA, newsletter, contact links. |
 
 ## Layout System
 
@@ -37,10 +44,11 @@ The public reconstruction separates the page into four reusable layers:
 
 | Layer | Role | Public Demo Equivalent |
 |---|---|---|
+| Storyboard state | Maps the true section order and changing visual mode. | `scroll-storyboard/src/main.js`. |
 | Editorial rail | Holds the current claim and keeps copy stable. | `.copy-rail` in `scene-choreography`. |
 | Product stage | Keeps the object visually central through scroll. | `.scene-lab`, `.desk`, `.pegboard`, `.product`. |
 | Instrumentation | Makes the ordinary object feel measured. | `.blueprint`, `.hud-stack`, `.formula-strip`, `.model-tab`. |
-| Scene color/props | Changes the meaning of the same object. | `body[data-scene]` thermal/legacy state changes. |
+| Scene color/props | Changes the meaning of the same object. | `body[data-scene]` and `body[data-mode]` state changes. |
 
 ## Rendering Surfaces
 

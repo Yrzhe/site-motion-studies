@@ -43,13 +43,32 @@ fonts, 3D models, videos, images, or bundled runtime.
   original-site scroll reference used to see the page-level choreography.
 - `media/original-reference/oryzo-hero-reference.jpg`: low-resolution reference
   still for the hero/thermal composition.
+- `media/demo-recordings/scroll-storyboard.mp4`: recording of the section-by-
+  section structural storyboard.
 - `media/demo-recordings/scene-choreography.mp4`: recording of the public
-  reconstruction demo.
+  focused scene-state reconstruction.
 
 ## Demos
 
-`demos/scene-choreography/` is the primary public reconstruction. It rebuilds
-the page-level grammar with original CSS/JS:
+Start with `demos/scroll-storyboard/`. It maps the real site order:
+
+1. Hero
+2. AI
+3. Wearable
+4. Feature: lift
+5. Feature: thermal
+6. Feature: circularity
+7. Encryption
+8. Grip
+9. Sustainability
+10. Testimonies
+11. Social content
+12. Product options
+13. Open weight
+14. Footer reveal
+
+Then inspect `demos/scene-choreography/`, a focused reconstruction of the
+product-stage grammar:
 
 - fixed left copy rail
 - desk/pegboard product stage

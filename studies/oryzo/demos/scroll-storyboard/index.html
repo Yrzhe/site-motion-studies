@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oryzo Scroll Storyboard</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body data-mode="stage">
+    <main class="storyboard">
+      <nav class="topbar" aria-label="Storyboard navigation">
+        <strong>ORYZO STRUCTURE</strong>
+        <span id="top-section">01 / HERO</span>
+      </nav>
+
+      <section class="viewport" aria-labelledby="section-title">
+        <aside class="left-panel">
+          <p class="mono" id="section-index">01 / 14</p>
+          <h1 id="section-title">Hero: product launch for a coaster</h1>
+          <p id="section-copy">
+            The page opens as if a cork coaster deserves a flagship product
+            launch.
+          </p>
+          <div class="quote-box">
+            <span class="mono">Original copy role</span>
+            <p id="section-quote">Made for mugs. Built for tables.</p>
+          </div>
+        </aside>
+
+        <section class="center-stage" aria-label="Visual storyboard">
+          <div class="stage-bg">
+            <span class="peg peg-a"></span>
+            <span class="peg peg-b"></span>
+            <span class="mat-grid"></span>
+            <span class="desk-line"></span>
+          </div>
+
+          <div class="hero-word" id="hero-word">ORYZO</div>
+          <div class="scene-card" id="scene-card">
+            <div class="scene-card__header">
+              <span id="visual-label">desk / cutting mat / coaster</span>
+              <strong id="visual-mode">PRODUCT STAGE</strong>
+            </div>
+            <div class="scene-card__body">
+              <div class="object-system" aria-hidden="true">
+                <div class="hand"></div>
+                <div class="cup">
+                  <span></span>
+                </div>
+                <div class="coaster">
+                  <span></span>
+                </div>
+                <div class="shadow"></div>
+                <div class="bark"></div>
+                <div class="vessels"><i></i><i></i><i></i></div>
+              </div>
+
+              <div class="gallery-grid" aria-hidden="true">
+                <span>wearable</span><span>yoga</span><span>bikini</span>
+                <span>glasses</span><span>pocket</span><span>magazine</span>
+              </div>
+
+              <div class="review-table" aria-hidden="true">
+                <span>Rating & Reviews</span>
+                <i></i><i></i><i></i><i></i>
+              </div>
+
+              <div class="content-wall" aria-hidden="true">
+                <span>Always On</span>
+                <span>RTX 3090</span>
+                <span>Drop-Tested</span>
+                <span>Legacy Support</span>
+              </div>
+
+              <div class="product-options" aria-hidden="true">
+                <span>ORYZO</span><span>PRO</span><span>PRO MAX</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="right-panel">
+          <div class="mechanic-card">
+            <span class="mono">Motion / state change</span>
+            <p id="motion-note">Camera settles over the desk while the product card and play chip establish a premium launch frame.</p>
+          </div>
+          <div class="layer-list" id="layer-list"></div>
+          <div class="progress-readout">
+            <span id="readout-kind">Canvas + DOM</span>
+            <strong id="readout-value">01</strong>
+          </div>
+        </aside>
+
+        <div class="section-rail" id="section-rail" aria-hidden="true"></div>
+        <div class="progress-line" aria-hidden="true"><span></span></div>
+      </section>
+
+      <section class="scroll-space" aria-label="Scroll space"></section>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

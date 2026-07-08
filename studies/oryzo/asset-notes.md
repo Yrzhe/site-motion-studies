@@ -25,7 +25,7 @@ This public study replaces original assets with:
   models/textures.
 - Low-resolution/compressed original-site reference media used only for
   commentary.
-- A demo recording generated from this repository's original demo code.
+- Demo recordings generated from this repository's original demo code.
 
 ## Excluded From Public Repo
 

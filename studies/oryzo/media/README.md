@@ -18,5 +18,9 @@ artifacts.
 
 ## Demo Recordings
 
+`demo-recordings/scroll-storyboard.mp4` is generated from
+`demos/scroll-storyboard/`, an original structural storyboard of the full
+section order.
+
 `demo-recordings/scene-choreography.mp4` is generated from
 `demos/scene-choreography/`, which is original CSS/JS in this repository.
