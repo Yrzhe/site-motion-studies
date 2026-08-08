@@ -25,7 +25,8 @@ This public study replaces original assets with:
   models/textures.
 - Low-resolution/compressed original-site reference media used only for
   commentary.
-- Demo recordings generated from this repository's original demo code.
+- Original per-effect recipes and minimal demos under `effects/` (all CSS/JS
+  written for this repository).
 
 ## Excluded From Public Repo
 

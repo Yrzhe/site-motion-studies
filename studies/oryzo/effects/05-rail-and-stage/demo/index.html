@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effect: editorial rail + product stage</title>
+<style>
+  *{margin:0;box-sizing:border-box}
+  body{font-family:ui-monospace,Menlo,monospace;background:#f4f4f4;color:#111}
+  header{position:fixed;top:0;left:0;right:0;padding:10px 14px;font-size:12px;background:#fff;border-bottom:1px solid #ddd;z-index:2}
+  header b{color:#2563eb}
+
+  #track{height:450vh}
+  #stage{position:sticky;top:0;height:100vh;display:flex}
+
+  /* THE LAYOUT SPLIT IS THE EFFECT:
+     left rail = the only thing that changes (copy swaps)
+     right stage = the object NEVER moves */
+  #rail{width:34%;padding:120px 40px 40px;border-right:1px solid #ddd}
+  #rail .claim{font-size:22px;font-weight:700;line-height:1.3;font-family:system-ui;transition:opacity .25s}
+  #rail .claim.fade{opacity:0}
+  #rail .idx{font-size:12px;color:#999;margin-bottom:14px}
+  #right{flex:1;display:flex;align-items:center;justify-content:center}
+  #obj{width:120px;height:120px;border-radius:50%;background:#111;border:6px solid var(--acc,#2563eb);transition:border-color .4s}
+
+  #hud{position:fixed;right:14px;top:52px;font-size:12px;line-height:1.9;background:#fff;border:1px solid #ddd;padding:10px 12px}
+  #hud b{color:#2563eb}
+</style>
+
+<header>ONE EFFECT: <b>fixed editorial rail + stable product stage</b>. Copy changes, object never moves — only its accent does.</header>
+
+<div id="hud">beat <b id="hb">0</b></div>
+
+<div id="track"><div id="stage">
+  <div id="rail"><div class="idx" id="idx">01 / 03</div><div class="claim" id="claim">It sits on your desk.</div></div>
+  <div id="right"><div id="obj"></div></div>
+</div></div>
+
+<script>
+/* The Oryzo trick: the page never rebuilds its layout. The LEFT RAIL is the
+   only narrative surface (claims swap), the RIGHT STAGE keeps the object in
+   the exact same pixels. Continuity = premium.
+
+   Rail text swaps with a tiny fade; the object only changes one prop
+   (accent) so you can SEE the beat change without any movement. */
+
+const CLAIMS = [
+  {t:'It sits on your desk.',        acc:'#2563eb'},
+  {t:'It survives your coffee.',     acc:'#dc2626'},
+  {t:'It outlives your laptop.',     acc:'#16a34a'},
+];
+const track = document.getElementById('track');
+const claim = document.getElementById('claim'), idx = document.getElementById('idx');
+const obj = document.getElementById('obj'), hb = document.getElementById('hb');
+let cur = 0;
+
+function onScroll(){
+  const r = track.getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+  const beat = Math.min(CLAIMS.length - 1, Math.floor(p * CLAIMS.length));
+  if (beat === cur) return;
+  cur = beat; hb.textContent = beat;
+  claim.classList.add('fade');
+  setTimeout(() => {                      // swap copy mid-fade
+    claim.textContent = CLAIMS[beat].t;
+    idx.textContent = String(beat+1).padStart(2,'0') + ' / 03';
+    obj.style.setProperty('--acc', CLAIMS[beat].acc);
+    claim.classList.remove('fade');
+  }, 250);
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+</script>
+</html>

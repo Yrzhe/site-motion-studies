@@ -11,16 +11,8 @@ scene, and technical measurement overlay. It is not an asset source for demos.
 
 `original-reference/oryzo-original-scroll-reference.mp4` is a compressed
 reference recording of the original site's broad scroll arc. It helps readers
-compare the page-level choreography before looking at the isolated demos.
+compare the page-level choreography before opening the per-effect recipes in
+`../effects/`.
 
 The private Motion Director archive keeps source-quality captures and raw site
 artifacts.
-
-## Demo Recordings
-
-`demo-recordings/scroll-storyboard.mp4` is generated from
-`demos/scroll-storyboard/`, an original structural storyboard of the full
-section order.
-
-`demo-recordings/scene-choreography.mp4` is generated from
-`demos/scene-choreography/`, which is original CSS/JS in this repository.

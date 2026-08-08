@@ -14,6 +14,9 @@
     "demo_recordings_are_original": false,
     "license_reviewed": false
   },
+  "effects": [
+    "01-example-effect"
+  ],
   "topics": [],
   "private_source": {
     "workspace": "motion-director",

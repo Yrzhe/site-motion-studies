@@ -122,6 +122,70 @@ function checkManifest(studyRoot, slug) {
   }
 }
 
+const requiredRecipeSections = [
+  "## Contract",
+  "## Mechanism",
+  "## Build steps",
+  "## Asset adaptation",
+  "## Acceptance checks",
+  "## Porting notes",
+];
+
+function checkEffects(studyRoot, slug) {
+  const effectsDir = path.join(studyRoot, "effects");
+  const manifest = readJson(path.join(studyRoot, "manifest.json")) || {};
+  const listed = Array.isArray(manifest.effects) ? manifest.effects : [];
+
+  const folders = fs.existsSync(effectsDir)
+    ? fs
+        .readdirSync(effectsDir, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => entry.name)
+        .sort()
+    : [];
+
+  if (manifest.status === "public" && folders.length === 0) {
+    logError(`${slug}: public study must contain at least one effects/<effect>/`);
+  }
+
+  for (const name of listed) {
+    if (!folders.includes(name)) {
+      logError(`${slug}: manifest.effects lists "${name}" but effects/${name}/ does not exist`);
+    }
+  }
+  for (const name of folders) {
+    if (!listed.includes(name)) {
+      logError(`${slug}: effects/${name}/ exists but is not listed in manifest.effects`);
+    }
+  }
+
+  for (const name of folders) {
+    const recipePath = path.join(effectsDir, name, "RECIPE.md");
+    const demoPath = path.join(effectsDir, name, "demo", "index.html");
+
+    if (!fs.existsSync(recipePath)) {
+      logError(`${slug}: effects/${name}/ is missing RECIPE.md`);
+    } else {
+      const recipe = fs.readFileSync(recipePath, "utf8");
+      for (const section of requiredRecipeSections) {
+        if (!recipe.includes(section)) {
+          logError(`${slug}: effects/${name}/RECIPE.md is missing "${section}" section`);
+        }
+      }
+      if (/see effect \d|effects\/\d\d-[a-z-]+\/RECIPE/i.test(recipe) && !recipe.includes("Combine with recipe")) {
+        logWarning(`${slug}: effects/${name}/RECIPE.md may cross-reference another effect for its mechanism — recipes must be self-contained`);
+      }
+      if (!/```json/.test(recipe)) {
+        logWarning(`${slug}: effects/${name}/RECIPE.md has no machine-readable acceptance fixture (\`\`\`json block)`);
+      }
+    }
+
+    if (!fs.existsSync(demoPath)) {
+      logError(`${slug}: effects/${name}/ is missing demo/index.html`);
+    }
+  }
+}
+
 function checkStudy(studyRoot) {
   const slug = path.basename(studyRoot);
 
@@ -132,6 +196,7 @@ function checkStudy(studyRoot) {
   }
 
   checkManifest(studyRoot, slug);
+  checkEffects(studyRoot, slug);
 
   for (const file of walkFiles(studyRoot)) {
     const relative = path.relative(root, file);

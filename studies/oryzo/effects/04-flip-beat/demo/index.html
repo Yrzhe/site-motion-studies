@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effect: scroll-driven flip, labels stay still</title>
+<style>
+  *{margin:0;box-sizing:border-box}
+  body{font-family:ui-monospace,Menlo,monospace;background:#f4f4f4;color:#111}
+  header{position:fixed;top:0;left:0;right:0;padding:10px 14px;font-size:12px;background:#fff;border-bottom:1px solid #ddd;z-index:2}
+  header b{color:#2563eb}
+
+  #track{height:300vh}
+  #stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center;perspective:900px}
+
+  /* two faces, back pre-rotated, container rotates on scroll */
+  #disc{position:relative;width:180px;height:180px;transform-style:preserve-3d}
+  .face{position:absolute;inset:0;border-radius:50%;backface-visibility:hidden;
+    display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+  .front{background:#111}
+  .back{background:#2563eb;transform:rotateX(180deg)}
+
+  /* the label does NOT rotate — that contrast is the effect */
+  #label{position:absolute;margin-top:150px;font-size:12px;color:#666}
+
+  #hud{position:fixed;right:14px;top:52px;font-size:12px;line-height:1.9;background:#fff;border:1px solid #ddd;padding:10px 12px}
+  #hud b{display:inline-block;width:56px;color:#2563eb}
+</style>
+
+<header>ONE EFFECT: <b>the object flips, the labels do not</b>. Two faces + backface-visibility + one rotateX from scroll.</header>
+
+<div id="hud"><div>angle <b id="ha">0°</b></div></div>
+
+<div id="track"><div id="stage">
+  <div id="disc">
+    <div class="face front">TOP</div>
+    <div class="face back">BOTTOM</div>
+  </div>
+  <div id="label">FLIP TEST · OBJECT-01</div>
+</div></div>
+
+<script>
+/* The flip reads as a serious physical gesture because everything AROUND
+   the object stays deadpan-still. Only the object rotates.
+
+   Structure: a container with transform-style:preserve-3d, two absolutely
+   stacked faces with backface-visibility:hidden, back face pre-rotated
+   180°. Scroll drives one rotateX on the container. */
+
+const track = document.getElementById('track');
+const disc  = document.getElementById('disc');
+const ha    = document.getElementById('ha');
+
+function onScroll(){
+  const r = track.getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+  const deg = p * 180;
+  disc.style.transform = `rotateX(${deg}deg)`;
+  ha.textContent = Math.round(deg) + '°';
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+</script>
+</html>

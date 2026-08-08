@@ -13,7 +13,7 @@ Public pattern:
 - Update physical values continuously from local progress.
 - Keep labels readable and avoid moving every text element at once.
 
-The `scene-choreography` demo uses this model directly in `src/main.js`.
+The `effects/01-scroll-scene-state/` recipe implements this model directly.
 
 ## Hover
 

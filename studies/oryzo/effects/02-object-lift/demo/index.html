@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Effect: object lift + shadow evidence</title>
+<style>
+  *{margin:0;box-sizing:border-box}
+  body{font-family:ui-monospace,Menlo,monospace;background:#f4f4f4;color:#111}
+  header{position:fixed;top:0;left:0;right:0;padding:10px 14px;font-size:12px;background:#fff;border-bottom:1px solid #ddd;z-index:2}
+  header b{color:#2563eb}
+
+  #track{height:300vh}
+  #stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center}
+
+  /* object + its shadow are separate elements — that's the whole trick */
+  #obj{width:110px;height:110px;border-radius:50%;background:#111;position:relative;z-index:1}
+  #shadow{position:absolute;width:110px;height:26px;border-radius:50%;background:rgba(0,0,0,.35);
+    transform:translateY(66px);filter:blur(6px)}
+  #wrap{position:relative;display:flex;align-items:center;justify-content:center}
+
+  #hud{position:fixed;right:14px;top:52px;font-size:12px;line-height:1.9;background:#fff;border:1px solid #ddd;padding:10px 12px}
+  #hud b{display:inline-block;width:64px;color:#2563eb}
+</style>
+
+<header>ONE EFFECT: <b>lift = translateY on the object + scale/fade on its shadow</b>. The shadow is the physical evidence.</header>
+
+<div id="hud">
+  <div>lift &nbsp;&nbsp;<b id="hp">0.00</b></div>
+  <div>offset <b id="ho">0px</b></div>
+</div>
+
+<div id="track"><div id="stage"><div id="wrap">
+  <div id="shadow"></div>
+  <div id="obj"></div>
+</div></div></div>
+
+<script>
+/* Lift reads as REAL because three things move together:
+   1. object rises        (translateY up)
+   2. shadow shrinks      (scale down)
+   3. shadow softens      (more blur, less opacity)
+   If only the object moves, it looks like a CSS transition.
+   If the shadow reacts, it looks like physics. */
+
+const track = document.getElementById('track');
+const obj = document.getElementById('obj'), sh = document.getElementById('shadow');
+const hp = document.getElementById('hp'), ho = document.getElementById('ho');
+
+function onScroll(){
+  const r = track.getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+
+  const lift = p * 90;                                   // px the object rises
+  obj.style.transform = `translateY(${-lift}px)`;
+  sh.style.transform  = `translateY(66px) scale(${1 - p * 0.45})`;
+  sh.style.filter     = `blur(${6 + p * 10}px)`;
+  sh.style.opacity    = 1 - p * 0.55;
+
+  hp.textContent = p.toFixed(2);
+  ho.textContent = Math.round(lift) + 'px';
+}
+addEventListener('scroll', onScroll, {passive:true});
+onScroll();
+</script>
+</html>

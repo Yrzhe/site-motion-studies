@@ -1,0 +1,31 @@
+# site-motion-studies
+
+> Rebuildable website motion effects for coding agents. Each effect folder
+> contains a self-contained RECIPE.md (contract, mechanism, asset adaptation,
+> acceptance checks) plus a minimal single-file demo. Read AGENTS.md for the
+> consumption protocol.
+
+## Studies
+
+- [Oryzo](studies/oryzo/README.md): cinematic deadpan product launch for a
+  cork coaster (https://oryzo.ai/)
+
+## Effects: oryzo
+
+- [Scroll scene state machine](studies/oryzo/effects/01-scroll-scene-state/RECIPE.md):
+  global scroll → beat index → local progress; each beat owns one action
+- [Object lift + shadow evidence](studies/oryzo/effects/02-object-lift/RECIPE.md):
+  object rises while its anchored shadow shrinks, blurs and fades
+- [Semantic color mode switch](studies/oryzo/effects/03-color-mode-switch/RECIPE.md):
+  one attribute swaps the whole palette; color carries the meaning
+- [Flip beat](studies/oryzo/effects/04-flip-beat/RECIPE.md):
+  the object flips to show its underside; labels stay deadpan-still
+- [Editorial rail + product stage](studies/oryzo/effects/05-rail-and-stage/RECIPE.md):
+  fixed rail narrates; the object never moves a pixel
+- [Measurement HUD labels](studies/oryzo/effects/06-measurement-hud/RECIPE.md):
+  mono labels derived from live state; one accent on the active tick
+
+## Meta
+
+- [AGENTS.md](AGENTS.md): how agents should consume and contribute
+- [Study template](templates/study/): scaffold for new studies

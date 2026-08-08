@@ -44,11 +44,11 @@ The public reconstruction separates the page into four reusable layers:
 
 | Layer | Role | Public Demo Equivalent |
 |---|---|---|
-| Storyboard state | Maps the true section order and changing visual mode. | `scroll-storyboard/src/main.js`. |
-| Editorial rail | Holds the current claim and keeps copy stable. | `.copy-rail` in `scene-choreography`. |
-| Product stage | Keeps the object visually central through scroll. | `.scene-lab`, `.desk`, `.pegboard`, `.product`. |
-| Instrumentation | Makes the ordinary object feel measured. | `.blueprint`, `.hud-stack`, `.formula-strip`, `.model-tab`. |
-| Scene color/props | Changes the meaning of the same object. | `body[data-scene]` and `body[data-mode]` state changes. |
+| Storyboard state | Maps the true section order and changing visual mode. | `effects/01-scroll-scene-state/`. |
+| Editorial rail | Holds the current claim and keeps copy stable. | `effects/05-rail-and-stage/`. |
+| Product stage | Keeps the object visually central through scroll. | `effects/05-rail-and-stage/` (stage half). |
+| Instrumentation | Makes the ordinary object feel measured. | `effects/06-measurement-hud/`. |
+| Scene color/props | Changes the meaning of the same object. | `effects/03-color-mode-switch/`. |
 
 ## Rendering Surfaces
 
