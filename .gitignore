@@ -12,6 +12,12 @@ build/
 .env
 .env.*
 
+# MagicPath 是私有画布的打草稿工具，它的会话文件带 project/component/revision id，
+# 与这个仓库无关 —— 这里只收源码和构建产物
+magicpath/
+magicpath-code.json
+**/settings/types.ts
+
 # Private clone artifacts should never be copied here
 mirror/
 assets/network/

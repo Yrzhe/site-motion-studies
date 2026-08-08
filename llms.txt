@@ -25,7 +25,16 @@
 - [Measurement HUD labels](studies/oryzo/effects/06-measurement-hud/RECIPE.md):
   mono labels derived from live state; one accent on the active tick
 
+## Patterns
+
+- [Agent Reply Lifecycle](patterns/agent-reply-lifecycle/README.md): 一次 AI 回复的
+  完整生命周期做成 35s 可拖动动效 —— 临界阻尼阶跃、一个高度做成四种滚动行为、
+  几何决定可见度的运行时折叠、定高裁剪的推理缝隙、并行分叉/掉队/合流、
+  CSS 挂载式流式出字、连续量驱动的常驻计划面板、静止中性 hover 才上色的引用上标。
+  原创，不复刻任何具体产品。
+
 ## Meta
 
 - [AGENTS.md](AGENTS.md): how agents should consume and contribute
 - [Study template](templates/study/): scaffold for new studies
+- [index.html](index.html): 仓库首页（GitHub Pages），索引 + 内嵌演示

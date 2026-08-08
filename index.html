@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Site Motion Studies</title>
+<meta name="description" content="可重建的网页动效库。每个效果一份自包含 recipe + 单文件 demo，给写代码的 agent 用。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#f6f5f2; --ink:#1c1b18; --mute:#8b8676; --line:rgba(28,27,24,.09);
+    --chip:#efece4; --card:#fff; --accent:#3f8f63;
+    --sans:'Inter','Noto Sans SC',ui-sans-serif,system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:940px;margin:0 auto;padding:0 24px}
+
+  /* ── 页头 ── */
+  header{padding:88px 0 8px}
+  h1{margin:0;font-size:15px;font-weight:500;letter-spacing:-.01em}
+  .lede{margin:20px 0 0;max-width:620px;font-size:24px;line-height:1.45;
+        letter-spacing:-.015em;font-weight:400}
+  .sub{margin:16px 0 0;max-width:600px;color:var(--mute);font-size:14.5px}
+  .links{margin:26px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:9px;
+       background:var(--card);box-shadow:inset 0 0 0 1px var(--line);
+       font-size:13px;text-decoration:none;transition:box-shadow .2s ease,transform .2s ease}
+  .btn:hover{box-shadow:inset 0 0 0 1px rgba(28,27,24,.22);transform:translateY(-1px)}
+  .btn svg{width:13px;height:13px;flex:none}
+
+  /* ── 嵌入的 demo ── */
+  .stage{margin:56px 0 0}
+  .stage-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+  .eyebrow{font-size:13px;color:var(--mute)}
+  .stage-foot{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:12px 2px 0;
+              color:var(--mute);font-size:12.5px}
+  .stage-foot a{text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
+  .stage-foot a:hover{border-color:var(--accent);color:var(--accent)}
+  .frame{position:relative;overflow:hidden;border-radius:16px;background:var(--card);
+         box-shadow:0 1px 2px rgba(28,27,24,.04),0 12px 40px rgba(28,27,24,.07),
+                    inset 0 0 0 1px var(--line)}
+  .frame-inner{position:relative;width:100%;height:0;padding-bottom:64%}
+  .frame iframe{position:absolute;top:0;left:0;width:1240px;height:760px;border:0;
+                transform-origin:0 0;background:var(--paper)}
+
+  /* ── 索引 ── */
+  section{margin:72px 0 0}
+  .sec-title{display:flex;align-items:baseline;gap:10px;margin:0 0 6px}
+  .sec-title h2{margin:0;font-size:16px;font-weight:500;letter-spacing:-.01em}
+  .count{font-family:var(--mono);font-size:11px;color:var(--mute);
+         background:var(--chip);border-radius:5px;padding:1px 6px}
+  .sec-note{margin:0 0 22px;color:var(--mute);font-size:14px;max-width:600px}
+
+  .row{display:flex;align-items:baseline;gap:14px;padding:13px 0;
+       border-top:1px solid var(--line);text-decoration:none}
+  .row:last-child{border-bottom:1px solid var(--line)}
+  .row-n{font-family:var(--mono);font-size:11.5px;color:var(--mute);flex:none;width:22px}
+  .row-body{min-width:0;flex:1}
+  .row-title{font-size:14.5px}
+  .row-desc{color:var(--mute);font-size:13.5px;margin-top:1px}
+  .row-go{flex:none;color:var(--mute);font-family:var(--mono);font-size:11.5px;
+          opacity:0;transition:opacity .18s ease,transform .18s ease;transform:translateX(-4px)}
+  .row:hover .row-go{opacity:1;transform:none}
+  .row:hover .row-title{color:var(--accent)}
+
+  footer{margin:88px 0 64px;padding-top:22px;border-top:1px solid var(--line);
+         color:var(--mute);font-size:13px}
+  footer a{text-decoration:none;border-bottom:1px solid var(--line)}
+
+  @media (max-width:760px){
+    header{padding-top:56px}
+    .lede{font-size:20px}
+    .row-go{display:none}
+    .stage .frame{border-radius:12px;margin-inline:-24px;width:calc(100% + 48px)}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <h1>Site Motion Studies</h1>
+    <p class="lede">可重建的网页动效库。一个站拆成许多个效果，每个效果一份自包含的
+      recipe 加一个单文件 demo。</p>
+    <p class="sub">主要读者是写代码的 agent —— 把它指向这个仓库，它能用你自己的素材
+      在你自己的站上把任意一个效果重建出来。这里不是被研究站点的镜像。</p>
+    <div class="links">
+      <a class="btn" href="https://github.com/Yrzhe/site-motion-studies">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="AGENTS.md"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 1.9h4.3L11 5.2v6.9H3.4z"/><path d="M7.6 2v3.2h3.2M5.4 8.4h3.4M5.4 10h2.2"/></svg>消费协议</a>
+      <a class="btn" href="llms.txt"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.4 3.6h9.2M2.4 7h9.2M2.4 10.4h5.6"/></svg>llms.txt</a>
+    </div>
+  </header>
+
+  <div class="stage">
+    <div class="stage-head">
+      <span class="eyebrow">最新加入</span>
+      <span class="count">35s · 原创</span>
+    </div>
+    <div class="frame">
+      <div class="frame-inner">
+        <iframe id="demo" src="patterns/agent-reply-lifecycle/demo/index.html"
+                title="Agent Reply Lifecycle 演示"></iframe>
+      </div>
+    </div>
+    <div class="stage-foot">
+      <a href="patterns/agent-reply-lifecycle/demo/index.html">整页打开 →</a>
+      <span>横版桌面界面，缩放嵌入；小屏上看得见编排，看不清字。</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-title"><h2>Patterns</h2><span class="count">1</span></div>
+    <p class="sec-note">与具体站点无关的原创模式，从零实现。</p>
+    <a class="row" href="patterns/agent-reply-lifecycle/README.md">
+      <span class="row-n">01</span>
+      <span class="row-body">
+        <span class="row-title">Agent Reply Lifecycle</span>
+        <div class="row-desc">一次 AI 回复的完整生命周期：推理 · 并行分派 · 工具调用 ·
+          浏览 · 失败重试 · 审批 · 生成预览 · diff · 交付</div>
+      </span>
+      <span class="row-go">recipe →</span>
+    </a>
+  </section>
+
+  <section>
+    <div class="sec-title"><h2>Studies</h2><span class="count">1 站 · 6 效果</span></div>
+    <p class="sec-note">从真实站点拆解出来的效果。重建的是机制，不是那个站的像素。</p>
+
+    <a class="row" href="studies/oryzo/effects/01-scroll-scene-state/demo/index.html">
+      <span class="row-n">01</span>
+      <span class="row-body"><span class="row-title">Scroll scene state machine</span>
+        <div class="row-desc">全局滚动 → 拍号 → 局部进度；每一拍只负责一个动作</div></span>
+      <span class="row-go">demo →</span>
+    </a>
+    <a class="row" href="studies/oryzo/effects/02-object-lift/demo/index.html">
+      <span class="row-n">02</span>
+      <span class="row-body"><span class="row-title">Object lift + shadow evidence</span>
+        <div class="row-desc">物体升起的同时，锚定的影子收缩、模糊、变淡</div></span>
+      <span class="row-go">demo →</span>
+    </a>
+    <a class="row" href="studies/oryzo/effects/03-color-mode-switch/demo/index.html">
+      <span class="row-n">03</span>
+      <span class="row-body"><span class="row-title">Semantic color mode switch</span>
+        <div class="row-desc">一个属性换掉整套配色；颜色本身就是意思</div></span>
+      <span class="row-go">demo →</span>
+    </a>
+    <a class="row" href="studies/oryzo/effects/04-flip-beat/demo/index.html">
+      <span class="row-n">04</span>
+      <span class="row-body"><span class="row-title">Flip beat</span>
+        <div class="row-desc">物体翻面露出底部，标签保持一动不动</div></span>
+      <span class="row-go">demo →</span>
+    </a>
+    <a class="row" href="studies/oryzo/effects/05-rail-and-stage/demo/index.html">
+      <span class="row-n">05</span>
+      <span class="row-body"><span class="row-title">Editorial rail + product stage</span>
+        <div class="row-desc">固定的文字栏负责叙述，物体一个像素都不移动</div></span>
+      <span class="row-go">demo →</span>
+    </a>
+    <a class="row" href="studies/oryzo/effects/06-measurement-hud/demo/index.html">
+      <span class="row-n">06</span>
+      <span class="row-body"><span class="row-title">Measurement HUD labels</span>
+        <div class="row-desc">等宽标签由实时状态推导；只有当前那一格上色</div></span>
+      <span class="row-go">demo →</span>
+    </a>
+  </section>
+
+  <footer>
+    原创代码与文档以 MIT 发布。被研究的站点、品牌、截图及引用作品的权利归各自所有者。
+    · <a href="https://github.com/Yrzhe/site-motion-studies">Yrzhe/site-motion-studies</a>
+  </footer>
+</div>
+
+<script>
+// demo 以 1240×794 的逻辑尺寸渲染，再整体缩放去贴合容器宽度 ——
+// 这是一件横版桌面界面，按窗口重排会把它压成另一个东西。
+(function () {
+  var f = document.getElementById('demo');
+  var box = f.parentElement;
+  function fit() {
+    var s = box.clientWidth / 1240;
+    f.style.transform = 'scale(' + s + ')';
+    box.style.paddingBottom = (760 * s) + 'px';
+  }
+  fit();
+  addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
