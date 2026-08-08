@@ -1,5 +1,8 @@
 # Site Motion Studies
 
+**[yrzhe.github.io/site-motion-studies](https://yrzhe.github.io/site-motion-studies/)**
+— browse the index and watch the demos run, no clone required.
+
 Curated website motion and design studies extracted from private Motion
 Director experiments.
 
