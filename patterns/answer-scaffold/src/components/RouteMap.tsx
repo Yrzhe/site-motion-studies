@@ -46,9 +46,12 @@ const IconBookmark = () => (
   </svg>
 );
 
-const IconCorner = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#e6e8ee" strokeWidth="1.5" strokeLinecap="round">
-    <path d="M11 4H5v6" />
+/* 取景/重新构图：两个对角的角标。不是一个角 —— 一个角读作「折角」，
+   两个对角才读作「框住」。 */
+const IconReframe = () => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#dfe2e9" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M10.5 3.5h4v4" />
+    <path d="M7.5 14.5h-4v-4" />
   </svg>
 );
 
@@ -171,20 +174,30 @@ export const RouteMap = ({ T, out }: { T: number; out: number }) => {
 
       <Compass />
 
-      {/* 底部：左边一块收藏，右边两站的清单 */}
-      <div className="absolute" style={{ left: 26, top: 676, opacity: ui, transform: `translateY(${(1 - ui) * 14}px)` }}>
+      {/* 底部：左边一块工具，右边两站的清单。
+
+          工具那一块是**一个卡片里对角摆两个子面板**（右上收藏、左下取景），
+          不是一个卡片外面挂一个按钮。子面板只比卡面亮 16 个灰阶 ——
+          它们是这块卡片内部的分区，不是浮在它上面的东西。 */}
+      <div
+        className="absolute"
+        style={{ left: 26, top: 676, opacity: ui, transform: `translateY(${(1 - ui) * 14}px)` }}
+      >
         <span
-          className="relative grid h-[124px] w-[124px] place-items-center rounded-[26px]"
+          className="relative block h-[124px] w-[124px] rounded-[30px]"
           style={{ background: 'rgba(30,34,40,0.74)', boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.13)', backdropFilter: 'blur(12px)' }}
         >
-          <IconBookmark />
           <span
-            className="absolute bottom-[-8px] left-[-8px] grid h-[54px] w-[54px] place-items-center rounded-[20px]"
-            style={{ background: 'rgba(214,218,226,0.9)' }}
+            className="absolute right-[12px] top-[12px] grid h-[50px] w-[50px] place-items-center rounded-[19px]"
+            style={{ background: 'rgba(255,255,255,0.07)' }}
           >
-            <span className="text-[#2a2e36]">
-              <IconCorner />
-            </span>
+            <IconBookmark />
+          </span>
+          <span
+            className="absolute bottom-[12px] left-[12px] grid h-[50px] w-[50px] place-items-center rounded-[19px]"
+            style={{ background: 'rgba(255,255,255,0.07)' }}
+          >
+            <IconReframe />
           </span>
         </span>
       </div>
