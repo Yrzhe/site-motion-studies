@@ -10,6 +10,7 @@ small, documented, and implemented from scratch.
 | Pattern | 讲的是什么 |
 |---|---|
 | [`agent-reply-lifecycle`](agent-reply-lifecycle/) | 一次 AI 回复的完整生命周期：推理缝隙、并行分派、运行时折叠、常驻计划面板、流式出字、引用上标 |
+| [`answer-scaffold`](answer-scaffold/) | 一次移动端 AI 生成的完整过程：把等待画成取景框、先占位再填、并行子任务错开落地、共享元素放大 |
 
 ## 一个 pattern 该长什么样
 

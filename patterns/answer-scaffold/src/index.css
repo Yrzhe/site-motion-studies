@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+/* 字体拿不到时退到系统栈，界面照常成立 —— 网络不是这个演示的前提 */
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #e9e8e4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 这件东西没有一条自定义动画：所有运动都是 f(T) 的纯函数，
+   由 rAF 推一个时间标量、再由组件算出每一帧的样式。
+   好处是拖时间轴到任意一刻都能定格 —— CSS 动画做不到这件事。 */

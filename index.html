@@ -49,6 +49,10 @@
   .frame-inner{position:relative;width:100%;height:0;padding-bottom:64%}
   .frame iframe{position:absolute;top:0;left:0;width:1240px;height:760px;border:0;
                 transform-origin:0 0;background:var(--paper)}
+  /* 竖版那件是手机界面：按整页宽度缩放会把它缩成一枚邮票，
+     所以给它一个更窄的舞台，居中放。 */
+  .frame-portrait{max-width:520px;margin:0 auto}
+  .frame-portrait iframe{width:600px;height:1080px;background:#e9e8e4}
 
   /* ── 索引 ── */
   section{margin:72px 0 0}
@@ -104,6 +108,23 @@
   <div class="stage">
     <div class="stage-head">
       <span class="eyebrow">最新加入</span>
+      <span class="count">36s · 逐帧还原</span>
+    </div>
+    <div class="frame frame-portrait">
+      <div class="frame-inner" id="pbox">
+        <iframe id="demo-p" src="patterns/answer-scaffold/demo/index.html"
+                title="Answer Scaffold 演示"></iframe>
+      </div>
+    </div>
+    <div class="stage-foot">
+      <a href="patterns/answer-scaffold/demo/index.html">整页打开 →</a>
+      <span>竖版手机界面，缩放嵌入；把时间轴拖到任意一刻都能定格。</span>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="stage-head">
+      <span class="eyebrow">上一件</span>
       <span class="count">35s · 原创</span>
     </div>
     <div class="frame">
@@ -119,8 +140,17 @@
   </div>
 
   <section>
-    <div class="sec-title"><h2>Patterns</h2><span class="count">1</span></div>
-    <p class="sec-note">与具体站点无关的原创模式，从零实现。</p>
+    <div class="sec-title"><h2>Patterns</h2><span class="count">2</span></div>
+    <p class="sec-note">与具体站点无关的模式，从零实现。</p>
+    <a class="row" href="patterns/answer-scaffold/README.md">
+      <span class="row-n">02</span>
+      <span class="row-body">
+        <span class="row-title">Answer Scaffold</span>
+        <div class="row-desc">把等待画成一个和结果严丝合缝的取景框 · 先占位再填 ·
+          两个子任务错开落地 · 共享元素放大 · 深色作为话题切换的标点</div>
+      </span>
+      <span class="row-go">recipe →</span>
+    </a>
     <a class="row" href="patterns/agent-reply-lifecycle/README.md">
       <span class="row-n">01</span>
       <span class="row-body">
@@ -184,12 +214,18 @@
 // demo 以 1240×794 的逻辑尺寸渲染，再整体缩放去贴合容器宽度 ——
 // 这是一件横版桌面界面，按窗口重排会把它压成另一个东西。
 (function () {
-  var f = document.getElementById('demo');
-  var box = f.parentElement;
+  var stages = [
+    { el: document.getElementById('demo'),   w: 1240, h: 760 },
+    { el: document.getElementById('demo-p'), w: 600,  h: 1080 }
+  ];
   function fit() {
-    var s = box.clientWidth / 1240;
-    f.style.transform = 'scale(' + s + ')';
-    box.style.paddingBottom = (760 * s) + 'px';
+    stages.forEach(function (s) {
+      if (!s.el) return;
+      var box = s.el.parentElement;
+      var k = box.clientWidth / s.w;
+      s.el.style.transform = 'scale(' + k + ')';
+      box.style.paddingBottom = (s.h * k) + 'px';
+    });
   }
   fit();
   addEventListener('resize', fit);

@@ -13,3 +13,11 @@ original fonts, original videos, original 3D models, or brand assets into this
 repository unless a license explicitly permits redistribution and the relevant
 study documents that permission in `asset-notes.md`.
 
+## References reproduced from motion studies
+
+`patterns/answer-scaffold` reproduces the **choreography and timing** of a
+publicly posted concept video by [@glebich](https://x.com/glebich)
+(https://x.com/glebich/status/2085585475016819136). Every interface element is
+implemented from scratch; the photographs are AI-generated. No frame, asset,
+font, or code from the original is redistributed here. Rights to the reference
+video remain with its author.
